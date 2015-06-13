@@ -75,9 +75,9 @@ else
 TIMSK |= _BV(TOIE1);
 
 
-OCR1A   = R*Alpha/63;
-OCR1B   = G*Alpha/63;
-OCR1C   = B*Alpha/63;
+OCR1A   = R*Alpha/64;
+OCR1B   = G*Alpha/64;
+OCR1C   = B*Alpha/64;
 
 return erreur;
 }

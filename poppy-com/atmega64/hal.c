@@ -15,6 +15,7 @@ void hal_init(void) {
     TWAR = (ADDRESS << 1) | (1<<TWGCE);  // I2C Address and enable general call
 //    TWAMR = 0x00;  // N'axite pas dans le atmega64
     TWCR = ((1 << TWEA) | (1 << TWEN) | (1 << TWIE));  // Enable ACK system
+
 }
 
 unsigned char i2c_transmit(com_state_t type) {
@@ -105,6 +106,9 @@ unsigned char i2cRead(unsigned char ack_enable) {
 
 // I2C Slave mode
 ISR(TWI_vect) {
+volatile static msg_t *msg;
+static unsigned char n = 0;
+static unsigned int i = 0;
     //  Test if there is really an interrupt
     if (TWCR&(1<<TWINT))
         switch (TWSR) {
@@ -127,7 +131,33 @@ ISR(TWI_vect) {
             // Data has been received on SLA+W; ACK has been returned.
             case TW_SR_DATA_ACK:
                 // Slave RX callback
-                ctx.data_cb(RX, &TWDR);
+               switch (n)
+                    {
+                    case 0:
+                        msg->reg=TWDR;
+                        n++;
+                        break;
+                    case 1:
+                        msg->size=TWDR;
+                        n++;
+                        break;
+                    default:
+                        if (i < msg->size)
+                            {
+                            msg->data[i]=TWDR;
+                            i++;
+                            }
+                        else
+                            {
+                            i=0;
+                            n=0;
+                            ctx.data_cb(RX, msg);
+                            }
+
+                    }
+
+
+
                 TWCR |= (1<<TWINT);
             break;
 

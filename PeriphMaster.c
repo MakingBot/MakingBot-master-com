@@ -29,7 +29,7 @@ extern struct data system_data;
  * \param dir Message direction. (That will be remove!)
  * \param msg Received message.
  */
-void rx_cb(msg_dir_t dir, msg_t *msg) {
+void rx_cb(msg_dir_t dir, char *msg) {
     /*
      * Add your RX code here.
      */
@@ -60,9 +60,10 @@ void rxgc_cb(msg_dir_t dir, msg_t *msg) {
  * \param msg Transmitted message. You have to put something in this msg_t.
  */
 void tx_cb(msg_t *msg) {
-    msg->reg=0x04;
-    msg->size =0x01;
-    //msg->data= "test";
+    msg->reg=0b00001111;
+    msg->size =0x8;
+    msg->data[0]= 0x55;
+    msg->data[7]= 0xAA;
       set_color(0,255,0,255);
 }
 /**
@@ -90,13 +91,13 @@ void tx_cb(msg_t *msg) {
 
 
   #ifdef __DEBUG__
-    set_color(0,0,255,255); //a priori 25ms d'execution
+   // set_color(0,0,255,255); //a priori 25ms d'execution
     #endif // __DEBUG__
 
 
 
   #ifdef __DEBUG__
-    set_color(255,0,0,255); //a priori 25ms d'execution
+    //set_color(255,0,0,255); //a priori 25ms d'execution
     #endif // __DEBUG__
 
 
