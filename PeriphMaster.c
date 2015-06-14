@@ -29,7 +29,7 @@ extern struct data system_data;
  * \param dir Message direction. (That will be remove!)
  * \param msg Received message.
  */
-void rx_cb(msg_dir_t dir, char *msg) {
+void rx_cb(msg_dir_t dir, msg_t *msg) {
     /*
      * Add your RX code here.
      */
