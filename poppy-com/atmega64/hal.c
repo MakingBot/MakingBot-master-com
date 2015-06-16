@@ -106,9 +106,9 @@ unsigned char i2cRead(unsigned char ack_enable) {
 
 // I2C Slave mode
 ISR(TWI_vect) {
-volatile static msg_t *msg;
+/*volatile static msg_t *msg;
 static unsigned char n = 0;
-static unsigned int i = 0;
+static unsigned int i = 0;*/
     //  Test if there is really an interrupt
     if (TWCR&(1<<TWINT))
         switch (TWSR) {
@@ -131,7 +131,7 @@ static unsigned int i = 0;
             // Data has been received on SLA+W; ACK has been returned.
             case TW_SR_DATA_ACK:
                 // Slave RX callback
-               switch (n)
+             /*  switch (n)
                     {
                     case 0:
                         msg->reg=TWDR;
@@ -154,8 +154,8 @@ static unsigned int i = 0;
                             ctx.data_cb(RX, msg);
                             }
 
-                    }
-
+                    }*/
+                ctx.data_cb(RX, &TWDR);
 
 
                 TWCR |= (1<<TWINT);

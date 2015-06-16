@@ -33,7 +33,11 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
     /*
      * Add your RX code here.
      */
-     set_color(0,0,255,255);
+     system_data.led.R = msg->data[0];
+     system_data.led.V = msg->data[1];
+     system_data.led.B = msg->data[2];
+     system_data.led.A = msg->data[3];
+
 }
 
 /**
@@ -50,7 +54,8 @@ void rxgc_cb(msg_dir_t dir, msg_t *msg) {
     /*
      * Add your RX general call code here.
      */
-         set_color(255,0,0,255);
+
+         set_color(msg->data[0],msg->data[1],msg->data[2],msg->data[3]);
 }
 
 /**
@@ -94,7 +99,7 @@ void tx_cb(msg_t *msg) {
    // set_color(0,0,255,255); //a priori 25ms d'execution
     #endif // __DEBUG__
 
-
+set_color(system_data.led.R,system_data.led.V,system_data.led.B,system_data.led.A);
 
   #ifdef __DEBUG__
     //set_color(255,0,0,255); //a priori 25ms d'execution
