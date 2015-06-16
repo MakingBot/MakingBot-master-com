@@ -37,11 +37,21 @@
 #define GPIO0BIT                    PORT0
 #define GPIO1BIT                    PORT1
 #define GPIO2BIT                    PORT2
+typedef struct
+ {
+ uchar R;
+ uchar V;
+ uchar B;
+ uchar A;
+ }led_power;
 struct data
  {
 	eBool periphstate[19];  //�tat des p�riph�riques true allum� false �teint
 	uchar periphcurrent[19]; //valeur de courant des p�riph�rique
 	eBool power; //�tat du syst�me true allum� false �teint
+	led_power led;
 
  }system_data;
+
+
 #endif // MAIN_H_INCLUDED
