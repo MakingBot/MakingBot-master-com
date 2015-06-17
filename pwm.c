@@ -12,7 +12,7 @@
 #include "include/PeriphMaster.h"
 #include "include/pwm.h"
 
-
+static uint PowerledR,PowerledV,PowerledB;
 
 void pwm_init()
 {
@@ -56,29 +56,30 @@ __asm__("cbi	0x1b,1" );
 reti();
 }
 
-ISR(TIMER1_OVF_vect) //naked suprimé sinon ça marche pas...
+ISR(TIMER1_OVF_vect) 
 {
-//allume les 3 leds
+//l'ajout des instruction retarde l'allumage des leds et permet de masquer la latence à vérifier
+OCR1A   = PowerledR; //mise à jour systématique
+OCR1B   = PowerledV;
+OCR1C   = PowerledB;
+if (systeme_data.led.R!=0)
+PERIPH_LED_PORT|= _BV(PERIPH_RED_PIN);
+if (systeme_data.led.V!=0)
+PERIPH_LED_PORT|= _BV(PERIPH_GREEN_PIN);
+if (systeme_data.led.B!=0)
+PERIPH_LED_PORT|= _BV(PERIPH_BLUE_PIN);
 
-/*__asm__("sbi	0x1b,0" );
-__asm__("sbi	0x1b,1" );
-__asm__("sbi	0x1b,2" );*/
-PERIPH_LED_PORT|= 0x07;
 }
-
+// calcul la valeur à donneé a la pwm
 uint set_color(uint R,uint G,uint B,uint Alpha)
 {
+	
+	PowerledR = R*Alpha/64;//todo corriger le type de R en uint
+	PowerledV = G*Alpha/64;
+	PowerledB = B*Alpha/64;
+	
+
 uint erreur = 0;
-if (Alpha == 0)
-TIMSK &= !_BV(TOIE1);
-else
-TIMSK |= _BV(TOIE1);
-
-
-OCR1A   = R*Alpha/64;
-OCR1B   = G*Alpha/64;
-OCR1C   = B*Alpha/64;
-
 return erreur;
 }
 
