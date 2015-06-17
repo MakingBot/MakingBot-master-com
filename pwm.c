@@ -83,3 +83,8 @@ uint erreur = 0;
 return erreur;
 }
 
+void set_color_s(led_power lp)
+{
+	set_color(lp.R,lp.G,lp.B,Lp.A);
+}
+
