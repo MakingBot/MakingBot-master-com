@@ -33,15 +33,25 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
     /*
      * Add your RX code here.
      */
-     system_data.led.R = msg->data[0];
-     system_data.led.V = msg->data[1];
-     system_data.led.B = msg->data[2];
-     system_data.led.A = msg->data[3];
+    switch (msg->reg)
+    {
+    case LED_COLOR :
+        system_data.led.R = msg->data[0];
+        system_data.led.G = msg->data[1];
+        system_data.led.B = msg->data[2];
+        system_data.led.A = msg->data[3];
+        break;
+    default:
+        break;
+
+    }
+
 
 }
 
 /**
  * \fn void rxgc_cb(msg_dir_t dir, msg_t *msg)
+ * \brief Callback function for Slave mode messages reception with general call.
  * \brief Callback function for Slave mode messages reception with general call.
  *
  * \param dir Message direction. (That will be remove!)
@@ -55,7 +65,6 @@ void rxgc_cb(msg_dir_t dir, msg_t *msg) {
      * Add your RX general call code here.
      */
 
-         set_color(msg->data[0],msg->data[1],msg->data[2],msg->data[3]);
 }
 
 /**
@@ -87,7 +96,7 @@ void tx_cb(msg_t *msg) {
      #ifdef __DEBUG__
     set_color(0,0,255,255); //a priori 25ms d'execution
     #endif // __DEBUG__
-
+system_data.led.A=0xff;
     // launchCom();
    sei();
     poppyNetwork_init(tx_cb, rx_cb, rxgc_cb);
@@ -99,7 +108,7 @@ void tx_cb(msg_t *msg) {
    // set_color(0,0,255,255); //a priori 25ms d'execution
     #endif // __DEBUG__
 
-set_color(system_data.led.R,system_data.led.V,system_data.led.B,system_data.led.A);
+set_color_s(system_data.led);
 
   #ifdef __DEBUG__
     //set_color(255,0,0,255); //a priori 25ms d'execution

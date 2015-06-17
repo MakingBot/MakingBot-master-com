@@ -56,28 +56,28 @@ __asm__("cbi	0x1b,1" );
 reti();
 }
 
-ISR(TIMER1_OVF_vect) 
+ISR(TIMER1_OVF_vect)
 {
 //l'ajout des instruction retarde l'allumage des leds et permet de masquer la latence à vérifier
 OCR1A   = PowerledR; //mise à jour systématique
 OCR1B   = PowerledV;
 OCR1C   = PowerledB;
-if (systeme_data.led.R!=0)
+if (system_data.led.R!=0)
 PERIPH_LED_PORT|= _BV(PERIPH_RED_PIN);
-if (systeme_data.led.V!=0)
+if (system_data.led.G!=0)
 PERIPH_LED_PORT|= _BV(PERIPH_GREEN_PIN);
-if (systeme_data.led.B!=0)
+if (system_data.led.B!=0)
 PERIPH_LED_PORT|= _BV(PERIPH_BLUE_PIN);
 
 }
 // calcul la valeur à donneé a la pwm
 uint set_color(uint R,uint G,uint B,uint Alpha)
 {
-	
+
 	PowerledR = R*Alpha/64;//todo corriger le type de R en uint
 	PowerledV = G*Alpha/64;
 	PowerledB = B*Alpha/64;
-	
+
 
 uint erreur = 0;
 return erreur;
@@ -85,6 +85,6 @@ return erreur;
 
 void set_color_s(led_power lp)
 {
-	set_color(lp.R,lp.G,lp.B,Lp.A);
+	set_color(lp.R,lp.G,lp.B,lp.A);
 }
 
