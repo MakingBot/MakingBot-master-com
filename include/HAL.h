@@ -12,6 +12,7 @@
 #define GPIOBITLENGTH 2
 #define GPIOPORTLENGTH 2
 #define CURRENTCHANNELLENGTH 2
+#define MINAPPCMD 10
 //macros
 
  #define GPIO(num,val)\
@@ -33,10 +34,11 @@
 //liste des registre de l'application
 typedef enum
 {
-    PINGI2C = MINAPPCMD,  
+    PINGI2C = MINAPPCMD,
     GPIOBIT = MINAPPCMD + 1,
     GPIOPORT= MINAPPCMD + 2,
-    CURRENTCHANNEL = MINAPPCMD + 3
+    CURRENTCHANNEL = MINAPPCMD + 3,
+    LED_COLOR = MINAPPCMD +4
 } AppReg_t;
 
 
