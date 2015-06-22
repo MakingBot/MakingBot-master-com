@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PeripHALpoppy-com" />
+		<Option pch_mode="2" />
+		<Option compiler="avr-gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/PeripHALpoppy-com.elf" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="5" />
+				<Option compiler="avr-gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/PeripHALpoppy-com.elf" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="5" />
+				<Option compiler="avr-gcc" />
+				<Compiler>
+					<Add option="-Os" />
+				</Compiler>
+			</Target>
+			<Environment>
+				<Variable name="MCU" value="atmega64" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="-mmcu=atmega64" />
+			<Add option="-Wall" />
+			<Add option="-DF_CPU=16000000UL" />
+			<Add option="-DAVR" />
+			<Add directory="poppy-com" />
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="poppy-com" />
+		</ResourceCompiler>
+		<Linker>
+			<Add option="-mmcu=atmega64" />
+			<Add option="-Wl,-Map=$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).map,--cref" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="avr-size $(TARGET_OUTPUT_FILE)" />
+			<Add after="avr-objdump -h -S $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lss" />
+			<Add after="avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).hex" />
+			<Add after="avr-objcopy --no-change-warnings -j .eeprom --change-section-lma .eeprom=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).eep" />
+		</ExtraCommands>
+		<Unit filename="HAL.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="PeriphMaster.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include/Command.h" />
+		<Unit filename="include/HAL.h" />
+		<Unit filename="include/PeriphMaster.h" />
+		<Unit filename="include/globaletypedef.h" />
+		<Unit filename="include/init.h" />
+		<Unit filename="include/isr.h" />
+		<Unit filename="include/protocole.h" />
+		<Unit filename="include/pwm.h" />
+		<Unit filename="include/utility.h" />
+		<Unit filename="isr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="poppy-com/atmega64/hal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="poppy-com/atmega64/hal.h" />
+		<Unit filename="poppy-com/inc/config.h" />
+		<Unit filename="poppy-com/inc/context.h" />
+		<Unit filename="poppy-com/inc/i2c_master.h" />
+		<Unit filename="poppy-com/inc/i2c_slave.h" />
+		<Unit filename="poppy-com/inc/mod_list.h" />
+		<Unit filename="poppy-com/poppyNetwork.h" />
+		<Unit filename="poppy-com/src/i2c_master.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="poppy-com/src/i2c_slave.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="poppy-com/src/poppyNetwork.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pwm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
