@@ -131,33 +131,7 @@ static unsigned int i = 0;*/
             // Data has been received on SLA+W; ACK has been returned.
             case TW_SR_DATA_ACK:
                 // Slave RX callback
-             /*  switch (n)
-                    {
-                    case 0:
-                        msg->reg=TWDR;
-                        n++;
-                        break;
-                    case 1:
-                        msg->size=TWDR;
-                        n++;
-                        break;
-                    default:
-                        if (i < msg->size)
-                            {
-                            msg->data[i]=TWDR;
-                            i++;
-                            }
-                        else
-                            {
-                            i=0;
-                            n=0;
-                            ctx.data_cb(RX, msg);
-                            }
-
-                    }*/
                 ctx.data_cb(RX, &TWDR);
-
-
                 TWCR |= (1<<TWINT);
             break;
 

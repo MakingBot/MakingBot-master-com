@@ -59,13 +59,12 @@
 		<Unit filename="PeriphMaster.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="include/Command.h" />
 		<Unit filename="include/HAL.h" />
 		<Unit filename="include/PeriphMaster.h" />
 		<Unit filename="include/globaletypedef.h" />
 		<Unit filename="include/init.h" />
 		<Unit filename="include/isr.h" />
-		<Unit filename="include/protocole.h" />
+		<Unit filename="include/protocol.h" />
 		<Unit filename="include/pwm.h" />
 		<Unit filename="include/utility.h" />
 		<Unit filename="isr.c">
@@ -88,6 +87,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="poppy-com/src/poppyNetwork.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="protocol.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pwm.c">
