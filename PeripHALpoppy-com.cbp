@@ -59,6 +59,7 @@
 		<Unit filename="PeriphMaster.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="bin/Debug/PeripHALpoppy-com.lss" />
 		<Unit filename="include/HAL.h" />
 		<Unit filename="include/PeriphMaster.h" />
 		<Unit filename="include/globaletypedef.h" />

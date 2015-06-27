@@ -11,6 +11,7 @@ extern context_t ctx;
 void idle(msg_dir_t dir, volatile unsigned char *data) {
     static unsigned char *data_to_send;
     static unsigned char msg_size = 0;
+    static unsigned char RX_count = 0;
     switch (dir) {
         case TX:
             /*
@@ -29,6 +30,7 @@ void idle(msg_dir_t dir, volatile unsigned char *data) {
             /*
              * That should be a new message to receive.
              */
+             RX_count++;
              ctx.msg.reg = *data;
             switch (ctx.msg.reg) {
                 case GET_ID:
@@ -66,8 +68,14 @@ void idle(msg_dir_t dir, volatile unsigned char *data) {
 }
 
 void get_size(msg_dir_t dir, volatile unsigned char *data) {
+    if (dir==TX)
+    idle(TX,data);
+    else
+    {
     ctx.msg.size = *data;
     ctx.data_cb = get_data;
+    }
+
 }
 
 void get_data(msg_dir_t dir, volatile unsigned char *data) {

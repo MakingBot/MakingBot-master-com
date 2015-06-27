@@ -13,6 +13,13 @@
 #define GPIOPORTLENGTH 2
 #define CURRENTCHANNELLENGTH 2
 #define MINAPPCMD 10
+#define PINGI2C     MINAPPCMD
+#define GPIO0_7     MINAPPCMD        + 1
+#define GPIO8_15    MINAPPCMD       + 2
+#define GPIO16_19   MINAPPCMD   + 3
+#define CURRENTCHANNEL  MINAPPCMD + 4
+#define LED_COLOR MINAPPCMD     + 5
+#define GPIOBIT  MINAPPCMD  + 6
 //macros
 
  #define GPIO(num,val)\
@@ -32,14 +39,7 @@
 // numéro du port suivi data la dir est fixé dans le code
 //voie courant suivie de la valeur
 //liste des registre de l'application
-typedef enum
-{
-    PINGI2C = MINAPPCMD,
-    GPIOBIT = MINAPPCMD + 1,
-    GPIOPORT= MINAPPCMD + 2,
-    CURRENTCHANNEL = MINAPPCMD + 3,
-    LED_COLOR = MINAPPCMD +4
-} AppReg_t;
+
 
 
 
@@ -54,7 +54,7 @@ typedef enum
  *  \return nothing
  *
  *  \details Details
- */void setGpioBit(const uchar numgpio,eBool val);
+ */eBool setGpioBit(const uchar numgpio,eBool val);
 
 
 #endif //a bouger en fin de fichier
