@@ -113,8 +113,8 @@
 #define GPIO19_DDR                    DDRD
 struct data
  {
-	eBool periphstate[19];  //�tat des p�riph�riques true allum� false �teint
-	uchar periphcurrent[19]; //valeur de courant des p�riph�rique
+	eBool periphstate[20];  //�tat des p�riph�riques true allum� false �teint
+	uchar periphcurrent[20]; //valeur de courant des p�riph�rique
 	eBool power; //�tat du syst�me true allum� false �teint
 	led_power led;
 

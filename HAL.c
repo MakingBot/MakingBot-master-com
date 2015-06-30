@@ -114,3 +114,8 @@
 
 
  }
+
+ void updateGpio(void)
+ {
+ //TODO (ou pas!) faire une fonction qui lit system_data et qui met à jourles ggio en fonction
+ }
