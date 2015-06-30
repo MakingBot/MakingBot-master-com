@@ -19,7 +19,9 @@
 #define GPIO16_19   MINAPPCMD   + 3
 #define CURRENTCHANNEL  MINAPPCMD + 4
 #define LED_COLOR MINAPPCMD     + 5
-#define GPIOBIT  MINAPPCMD  + 6
+#define GPIOBIT  MINAPPCMD  + 6 //correspon,d à la GPIO0 les 19 suivante sont utilisé
+//reservé
+#define GPIOPORT    MINAPPCMD +26
 //macros
 
  #define GPIO(num,val)\
@@ -56,5 +58,6 @@
  *  \details Details
  */eBool setGpioBit(const uchar numgpio,eBool val);
 
+ void updateGpio(void);
 
 #endif //a bouger en fin de fichier
