@@ -34,12 +34,7 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
         msg->size = 1;
         msg->data[0] = ADRESSE;
         break;
-    case GPIOBIT :  // num IO // etat
-    for (unsigned char i = msg->size;i>0;i--)
-        {
-        system_data.periphstate[i]=msg->data[i];  // un octoct à 0 ou 1 pour commender la voie correspondante
-        }
-        break;
+
     case GPIOPORT:
 
         gpionum = 0;
@@ -56,6 +51,13 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
         }
     case CURRENTCHANNEL :
         break;
+    case GPIOBIT :  // num IO // etat
+    for (unsigned char i = msg->size;i>0;i--)
+        {
+        system_data.periphstate[20-i]=(eBool)msg->data[i];  // un octect à 0 ou 1 pour commander la voie correspondante
+        setGpioBit(20-i,(eBool)msg->data[i]);
+        }
+
     default:
         gpionum = msg->reg;
         temp = GPIOBIT;
