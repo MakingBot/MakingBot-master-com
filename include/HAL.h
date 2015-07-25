@@ -5,6 +5,13 @@
 #ifndef HAL_H
 #define HAL_H
 #include "globaletypedef.h"
+#define DO_PRAGMA(x) _Pragma (#x)
+#define TODO(x) DO_PRAGMA(message ("TODO - " #x))
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+
+
 #define READ false
 #define WRITE true
 // definition of datatype length
@@ -23,6 +30,13 @@
 //reservé
 #define GPIOPORT    MINAPPCMD +26
 //macros
+#pragma message "adresse of MINAPPCMD = " STR(MINAPPCMD)
+#pragma message "adresse of PINGI2C = " STR(PINGI2C)
+#pragma message "adresse of GPIO0_7 = " STR(GPIO0_7)
+#pragma message "adresse of CURRENTCHANNEL = " STR(CURRENTCHANNEL)
+#pragma message "adresse of LED_COLOR = " STR(LED_COLOR)
+#pragma message "adresse of GPIOBIT = " STR(GPIOBIT)
+#pragma message "adresse of GPIOPORT = " STR(GPIOPORT)
 
  #define GPIO(num,val)\
  if (!val )\
