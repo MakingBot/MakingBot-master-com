@@ -11,6 +11,8 @@
 *.bak
 *.gc*
 *.info
+*.layout
+*.*~
 /Docs
 obj
 bin
