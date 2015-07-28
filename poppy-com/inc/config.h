@@ -2,23 +2,28 @@
  * This file contain default configuration of the project.
  */
 
+
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
-#include "poppy-com/inc/mod_list.h"
+
+#include "mod_list.h"
+
 
 #define DEFAULTID 0x01
+
+#define ADDRESS 0x48
 
 #ifndef MODULETYPE
     #define MODULETYPE DEV_BOARD
 #endif
 
-#ifndef MCU
-    #define MCU atmega328p
-#endif
+//#ifndef MCU
+    #define MCU atmega64
+//#endif
 
 #ifndef MAINCLOCK
-    #define MAINCLOCK 16000000
+    #define MAINCLOCK 8000000
 #endif
 
 #ifndef SCLFREQ
@@ -33,6 +38,12 @@
     #define HAL "poppy-com/atmega328p/hal.h"
 #elif MCU == stub
     #define HAL "poppy-com/stub/hal.h"
+#elif MCU== atmega64
+  #define HAL "../atmega64/hal.h"
 #endif
 
 #endif /* CONFIG_H_ */
+
+
+
+

@@ -14,17 +14,19 @@ DOXYFILE = .Doxyfile
 # MCU = attiny13
 # MCU = attiny2313
 # MCU = atmega8
-MCU = atmega328p
+# MCU = atmega328p
+MCU = atmega64
 # MCU = attiny45
 
 # Target file name (without extension).
-TARGET = template
+TARGET = PeriphMaster
 
 # Programming hardware: type avrdude -c ?
 # to get a full listing.
 # AVRDUDE_PROGRAMMER = dapa
 # AVRDUDE_PROGRAMMER = usbtiny
-AVRDUDE_PROGRAMMER = dragon_isp
+# AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PROGRAMMER = dragon_jtag
 # AVRDUDE_PROGRAMMER = dt006
 
 AVRDUDE_PORT = usb # not really needed for usb
@@ -52,7 +54,10 @@ poppy-com/src/i2c_slave.c \
 poppy-com/src/poppyNetwork.c \
 poppy-com/$(MCU)/hal.c
 # Application source files
-SRC +=
+SRC +=\
+isr.c\
+init.c\
+pwm.c
 
 # You can also wrap lines by appending a backslash to the end of the line:
 #SRC += baz.c \
@@ -72,7 +77,7 @@ ASRC =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
-EXTRAINCDIRS = poppy-com/ poppy-com/inc/ poppy-com/src/ poppy-com/$(MCU)/
+EXTRAINCDIRS = poppy-com/ poppy-com/inc/ poppy-com/src/ poppy-com/$(MCU)/ include/ 
 
 
 # Optional compiler flags.
