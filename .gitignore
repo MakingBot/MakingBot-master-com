@@ -8,6 +8,10 @@
 *.lst
 *.map
 *.sym
+*.bak
 *.gc*
 *.info
 /Docs
+obj
+bin
+
