@@ -8,6 +8,14 @@
 *.lst
 *.map
 *.sym
+*.bak
 *.gc*
 *.info
+*.cbp
+*.depend
+*.layout
+*.*~
 /Docs
+obj
+bin
+
