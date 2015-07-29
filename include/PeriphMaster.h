@@ -6,6 +6,7 @@
 #define PERIPHMASTER_H_INCLUDED
 #include <avr/io.h>
 #include "globaletypedef.h"
+#include "include/pwm.h"
 
 //#define F_CPU 1000000UL // 1 MHz
 #define CYAN		0x45	// 0b01000010
@@ -14,6 +15,7 @@
 #define RED	    0x42
 #define GREEN   0x44
 #define BLUE    0x41
+
 
 #define PERIPH_LED_PORT             PORTA
 #define PERIPH_LED_DDR              DDRA
@@ -37,11 +39,15 @@
 #define GPIO0BIT                    PORT0
 #define GPIO1BIT                    PORT1
 #define GPIO2BIT                    PORT2
+
 struct data
  {
 	eBool periphstate[19];  //�tat des p�riph�riques true allum� false �teint
 	uchar periphcurrent[19]; //valeur de courant des p�riph�rique
 	eBool power; //�tat du syst�me true allum� false �teint
+	led_power led;
 
  }system_data;
+
+
 #endif // MAIN_H_INCLUDED

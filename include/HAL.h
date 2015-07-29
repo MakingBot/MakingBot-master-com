@@ -12,6 +12,7 @@
 #define GPIOBITLENGTH 2
 #define GPIOPORTLENGTH 2
 #define CURRENTCHANNELLENGTH 2
+#define MINAPPCMD 10
 //macros
 
  #define GPIO(num,val)\
@@ -30,13 +31,15 @@
 //longueur data 2 1er octect numéro gpio, 2eme etat gpio type bool
 // numéro du port suivi data la dir est fixé dans le code
 //voie courant suivie de la valeur
+//liste des registre de l'application
 typedef enum
 {
-    PINGI2C,
-    GPIOBIT,
-    GPIOPORT,
-    CURRENTCHANNEL
-} eDataType;
+    PINGI2C = MINAPPCMD,
+    GPIOBIT = MINAPPCMD + 1,
+    GPIOPORT= MINAPPCMD + 2,
+    CURRENTCHANNEL = MINAPPCMD + 3,
+    LED_COLOR = MINAPPCMD +4
+} AppReg_t;
 
 
 
