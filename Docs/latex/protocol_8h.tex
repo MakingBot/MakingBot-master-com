@@ -1,0 +1,107 @@
+\hypertarget{protocol_8h}{\section{include/protocol.h \-File \-Reference}
+\label{protocol_8h}\index{include/protocol.\-h@{include/protocol.\-h}}
+}
+
+
+traitement des message i2c  
+
+
+\-This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{protocol_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{protocol_8h_ace61de97737b4ab184cc58f6fa90e61b}{rx\-\_\-cb} (\hyperlink{poppy_network_8h_a1def9945bd875d4a35c81b0c452053d1}{msg\-\_\-dir\-\_\-t} dir, \hyperlink{structmsg__t}{msg\-\_\-t} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em \-Callback function for \-Slave mode messages reception. \end{DoxyCompactList}\item 
+void \hyperlink{protocol_8h_ab93d299989e0e94c4f6f91d95936a070}{rxgc\-\_\-cb} (\hyperlink{poppy_network_8h_a1def9945bd875d4a35c81b0c452053d1}{msg\-\_\-dir\-\_\-t} dir, \hyperlink{structmsg__t}{msg\-\_\-t} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em \-Callback function for \-Slave mode messages reception with general call. \end{DoxyCompactList}\item 
+void \hyperlink{protocol_8h_ae4dafcb82441709916a9e68df792f44a}{tx\-\_\-cb} (\hyperlink{structmsg__t}{msg\-\_\-t} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em \-Callback function for \-Slave mode messages transmission. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+traitement des message i2c 
+
+\-Definition in file \hyperlink{protocol_8h_source}{protocol.\-h}.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{protocol_8h_ace61de97737b4ab184cc58f6fa90e61b}{\index{protocol.\-h@{protocol.\-h}!rx\-\_\-cb@{rx\-\_\-cb}}
+\index{rx\-\_\-cb@{rx\-\_\-cb}!protocol.h@{protocol.\-h}}
+\subsubsection[{rx\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf rx\-\_\-cb} (
+\begin{DoxyParamCaption}
+\item[{{\bf msg\-\_\-dir\-\_\-t}}]{dir, }
+\item[{{\bf msg\-\_\-t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}\label{protocol_8h_ace61de97737b4ab184cc58f6fa90e61b}
+
+
+\-Callback function for \-Slave mode messages reception. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-Message direction. (\-That will be remove!) \\
+\hline
+{\em msg} & \-Received message. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 20 of file protocol.\-c.
+
+\hypertarget{protocol_8h_ab93d299989e0e94c4f6f91d95936a070}{\index{protocol.\-h@{protocol.\-h}!rxgc\-\_\-cb@{rxgc\-\_\-cb}}
+\index{rxgc\-\_\-cb@{rxgc\-\_\-cb}!protocol.h@{protocol.\-h}}
+\subsubsection[{rxgc\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf rxgc\-\_\-cb} (
+\begin{DoxyParamCaption}
+\item[{{\bf msg\-\_\-dir\-\_\-t}}]{dir, }
+\item[{{\bf msg\-\_\-t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}\label{protocol_8h_ab93d299989e0e94c4f6f91d95936a070}
+
+
+\-Callback function for \-Slave mode messages reception with general call. 
+
+\-Callback function for \-Slave mode messages reception with general call.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-Message direction. (\-That will be remove!) \\
+\hline
+{\em msg} & \-Received message.\\
+\hline
+{\em dir} & \-Message direction. (\-That will be remove!) \\
+\hline
+{\em msg} & \-Received message. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 82 of file protocol.\-c.
+
+\hypertarget{protocol_8h_ae4dafcb82441709916a9e68df792f44a}{\index{protocol.\-h@{protocol.\-h}!tx\-\_\-cb@{tx\-\_\-cb}}
+\index{tx\-\_\-cb@{tx\-\_\-cb}!protocol.h@{protocol.\-h}}
+\subsubsection[{tx\-\_\-cb}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf tx\-\_\-cb} (
+\begin{DoxyParamCaption}
+\item[{{\bf msg\-\_\-t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}\label{protocol_8h_ae4dafcb82441709916a9e68df792f44a}
+
+
+\-Callback function for \-Slave mode messages transmission. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & \-Transmitted message. \-You have to put something in this \hyperlink{structmsg__t}{msg\-\_\-t}. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 98 of file protocol.\-c.
+

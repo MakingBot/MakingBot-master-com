@@ -1,0 +1,70 @@
+\hypertarget{_h_a_l_8c}{\section{\-H\-A\-L.\-c \-File \-Reference}
+\label{_h_a_l_8c}\index{\-H\-A\-L.\-c@{\-H\-A\-L.\-c}}
+}
+
+
+implémantation de la couche d'abstraction matérielle  
+
+
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$string.\-h$>$}\*
+{\ttfamily \#include \char`\"{}include/globaletypedef.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}include/\-Periph\-Master.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}include/\-H\-A\-L.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}include/init.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}include/isr.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}include/pwm.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}include/utility.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}poppy-\/com/poppy\-Network.\-h\char`\"{}}\*
+\-Include dependency graph for \-H\-A\-L.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_h_a_l_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+e\-Bool \hyperlink{_h_a_l_8c_a186f51a8cab188d9a3ed436ba4897c0c}{set\-Gpio\-Bit} (const uchar numgpio, e\-Bool val)
+\begin{DoxyCompactList}\small\item\em \-Brief. \end{DoxyCompactList}\item 
+\hypertarget{_h_a_l_8c_ae10873a278c81366f549cdbb88616efd}{void {\bfseries update\-Gpio} (void)}\label{_h_a_l_8c_ae10873a278c81366f549cdbb88616efd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+implémantation de la couche d'abstraction matérielle \-This file include all driver header or wrapper but not hardware file 
+
+\-Definition in file \hyperlink{_h_a_l_8c_source}{\-H\-A\-L.\-c}.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_h_a_l_8c_a186f51a8cab188d9a3ed436ba4897c0c}{\index{\-H\-A\-L.\-c@{\-H\-A\-L.\-c}!set\-Gpio\-Bit@{set\-Gpio\-Bit}}
+\index{set\-Gpio\-Bit@{set\-Gpio\-Bit}!HAL.c@{\-H\-A\-L.\-c}}
+\subsubsection[{set\-Gpio\-Bit}]{\setlength{\rightskip}{0pt plus 5cm}e\-Bool {\bf set\-Gpio\-Bit} (
+\begin{DoxyParamCaption}
+\item[{const uchar}]{numgpio, }
+\item[{e\-Bool}]{val}
+\end{DoxyParamCaption}
+)}}\label{_h_a_l_8c_a186f51a8cab188d9a3ed436ba4897c0c}
+
+
+\-Brief. 
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+\mbox{\tt in}  & {\em port} & port to change \\
+\hline
+\mbox{\tt in}  & {\em bit} & bit in port to change \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+nothing
+\end{DoxyReturn}
+\-Details 
+
+\-Definition at line 43 of file \-H\-A\-L.\-c.
+

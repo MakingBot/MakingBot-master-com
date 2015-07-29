@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$poppy_network_8h.html" title="Poppy communication main include file." alt="" coords="5,83,189,112"/>
+<area shape="rect" id="node5" href="$protocol_8h.html" title="traitement des message i2c" alt="" coords="213,83,336,112"/>
+<area shape="rect" id="node7" href="$_h_a_l_8h.html" title="fichier d&#39;entête de la couche d&#39;abstraction matériel" alt="" coords="360,83,464,112"/>
+<area shape="rect" id="node9" href="$globaletypedef_8h.html" title="type personnaliser" alt="" coords="397,160,560,189"/>
+<area shape="rect" id="node12" href="$_periph_master_8h.html" title="header must be updated for remove hardware ref" alt="" coords="539,83,693,112"/>
+<area shape="rect" id="node17" href="$pwm_8h_source.html" title="include/pwm.h" alt="" coords="672,160,779,189"/>
+<area shape="rect" id="node19" href="$utility_8h.html" title="wrapper to util" alt="" coords="768,83,877,112"/>
+<area shape="rect" id="node23" href="$init_8h_source.html" title="include/init.h" alt="" coords="901,83,995,112"/>
+<area shape="rect" id="node26" href="$isr_8h_source.html" title="include/isr.h" alt="" coords="1019,83,1109,112"/>
+</map>
