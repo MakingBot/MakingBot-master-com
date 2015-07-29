@@ -6,7 +6,7 @@
 #define PERIPHMASTER_H_INCLUDED
 #include <avr/io.h>
 #include "globaletypedef.h"
-#include "include/pwm.h"
+#include "pwm.h"
 
 //#define F_CPU 1000000UL // 1 MHz
 #define CYAN		0x45	// 0b01000010
