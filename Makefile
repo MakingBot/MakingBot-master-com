@@ -60,7 +60,9 @@ poppy-com/$(MCU)/hal.c
 SRC += \
 isr.c \
 init.c \
-pwm.c
+pwm.c \
+HAL.c \
+protocol.c
 
 # You can also wrap lines by appending a backslash to the end of the line:
 #SRC += baz.c \

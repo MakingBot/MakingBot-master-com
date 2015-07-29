@@ -21,6 +21,7 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
     /*
      * Add your RX code here.
      */
+     uchar gpionum,temp;
     switch (msg->reg)
     {
     case LED_COLOR :
@@ -33,22 +34,36 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
         msg->size = 1;
         msg->data[0] = ADRESSE;
         break;
-    case GPIOBIT :
+
+    case GPIOPORT:
+
+        gpionum = 0;
+        while(msg->size)
+        {
+            for (unsigned char bit=0; bit<8; bit++)
+            {
+
+                system_data.periphstate[gpionum] = bit << msg->data[msg->size];
+                setGpioBit(gpionum,system_data.periphstate[gpionum]);
+                gpionum++;
+            }
+            msg->size--;
+        }
+    case CURRENTCHANNEL :
+        break;
+    case GPIOBIT :  // num IO // etat
     for (unsigned char i = msg->size;i>0;i--)
         {
-        system_data.periphstate[i]=msg->data[i];  // un octoct à 0 ou 1 pour commender la voie correspondante
+        system_data.periphstate[20-i]=(eBool)msg->data[i];  // un octect à 0 ou 1 pour commander la voie correspondante
+        setGpioBit(20-i,(eBool)msg->data[i]);
         }
-        break;
-    case GPIOPORT:
-    for (unsigned char i=0;i<8;i++)
-    {
-        unsigned char mask = 1;
-        system_data.periphstate[i] = mask & msg->data[0];
-        mask = mask << i;
-    }
 
-    case CURRENTCHANNEL :
     default:
+        gpionum = msg->reg;
+        temp = GPIOBIT;
+        gpionum = gpionum - temp;
+        setGpioBit(gpionum,(eBool)msg->data[0]);
+        system_data.periphstate[gpionum]=(eBool)msg->data[0];
         break;
 
     }

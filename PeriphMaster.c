@@ -32,32 +32,25 @@ extern struct data system_data;
  */int main()
 {
 
-   cli();
-     init();
-     pwm_init();
-     isr_init();
-     #ifdef __DEBUG__
-    set_color(0,0,255,255); //a priori 25ms d'execution
-    #endif // __DEBUG__
-system_data.led.A=0xff;
-    // launchCom();
-   sei();
+    cli();
+    init();
+    pwm_init();
+    isr_init();
+
+    system_data.led.A=0xff;
+
+    sei();
     poppyNetwork_init(tx_cb, rx_cb, rxgc_cb);
-   while(1)
-   {
-
-
-  #ifdef __DEBUG__
-   // set_color(0,0,255,255); //a priori 25ms d'execution
-    #endif // __DEBUG__
-
-set_color_s(system_data.led);
-
-  #ifdef __DEBUG__
-    //set_color(255,0,0,255); //a priori 25ms d'execution
-    #endif // __DEBUG__
+    while(1)
+    {
 
 
 
-   }
+
+        set_color_s(system_data.led);
+
+
+
+
+    }
 }
