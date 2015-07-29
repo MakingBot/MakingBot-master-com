@@ -4,7 +4,7 @@
  */
 #ifndef HAL_H
 #define HAL_H
-#include "include/globaletypedef.h"
+#include "globaletypedef.h"
 #define READ false
 #define WRITE true
 // definition of datatype length

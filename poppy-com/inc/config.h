@@ -2,10 +2,13 @@
  * This file contain default configuration of the project.
  */
 
+
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
-#include "poppy-com/inc/mod_list.h"
+
+#include "mod_list.h"
+
 
 #define DEFAULTID 0x01
 
@@ -38,3 +41,7 @@
 #endif
 
 #endif /* CONFIG_H_ */
+
+
+
+
