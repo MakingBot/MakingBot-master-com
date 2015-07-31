@@ -18,7 +18,7 @@
 #endif
 
 #ifndef MAINCLOCK
-    #define MAINCLOCK 16000000
+    #define MAINCLOCK 8000000
 #endif
 
 #ifndef SCLFREQ
@@ -34,7 +34,7 @@
 #elif MCU == stub
     #define HAL "poppy-com/stub/hal.h"
 #elif MCU== atmega64
-  #define HAL "../atmega64/hal.h"
+  #define HAL "poppy-com/atmega64/hal.h"
 #endif
 
 #endif /* CONFIG_H_ */

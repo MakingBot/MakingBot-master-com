@@ -8,7 +8,8 @@
 #include "include/globaletypedef.h"
 #include "include/pwm.h"
 
-//#define F_CPU 1000000UL // 1 MHz
+
+#define F_CPU MAINCLOCK
 #define CYAN		0x45	// 0b01000010
 #define JAUNE        0x46
 #define WHITE       0x47

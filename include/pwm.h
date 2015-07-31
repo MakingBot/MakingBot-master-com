@@ -11,7 +11,7 @@ typedef struct
  uchar B;
  uchar A;
  }led_power;
-void pwm_init();
+void pwm_init(void);
 uint set_color(uint R,uint G,uint B,uint Alpha);
 void set_color_s(led_power lp);
 
