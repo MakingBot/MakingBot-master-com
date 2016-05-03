@@ -21,6 +21,7 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
     /*
      * Add your RX code here.
      */
+     unsigned char bit,i;
      uchar gpionum,temp;
     switch (msg->reg)
     {
@@ -40,7 +41,7 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
         gpionum = 0;
         while(msg->size)
         {
-            for (unsigned char bit=0; bit<8; bit++)
+            for (bit=0; bit<8; bit++)
             {
 
                 system_data.periphstate[gpionum] = bit << msg->data[msg->size];
@@ -52,9 +53,9 @@ void rx_cb(msg_dir_t dir, msg_t *msg) {
     case CURRENTCHANNEL :
         break;
     case GPIOBIT :  // num IO // etat
-    for (unsigned char i = msg->size;i>0;i--)
+    for (i = msg->size;i>0;i--)
         {
-        system_data.periphstate[20-i]=(eBool)msg->data[i];  // un octect Ã  0 ou 1 pour commander la voie correspondante
+        system_data.periphstate[20-i]=(eBool)msg->data[i];  // un octect à 0 ou 1 pour commander la voie correspondante
         setGpioBit(20-i,(eBool)msg->data[i]);
         }
 

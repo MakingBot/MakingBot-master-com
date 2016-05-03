@@ -1,4 +1,4 @@
-﻿/**
+/**
  *  \file globaletypedef.h
  *  \brief type personnaliser
  *

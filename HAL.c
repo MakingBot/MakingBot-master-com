@@ -1,6 +1,6 @@
-ï»¿/**
+/**
  *  \file HAL.c
- *  \brief implÃ©mantation de la couche d'abstraction matÃ©rielle
+ *  \brief implémantation de la couche d'abstraction matérielle
  *  \details This file include all driver header or wrapper but not hardware file
  */
 #include <stdlib.h>
@@ -49,7 +49,7 @@
 	 GPIO(0,val); //c'est une macro
 	 break;
 	 case 1 :
-	 GPIO(1,val); //c'est une macro le premier caractÃ©re est substituer et ne peut donc par etre variable
+	 GPIO(1,val); //c'est une macro le premier caractére est substituer et ne peut donc par etre variable
 	 break;
 	 case 2 :
 	 GPIO(2,val); //c'est une macro
@@ -79,7 +79,7 @@
 	 GPIO(10,val); //c'est une macro
 	 break;
 	 case 11 :
-	 GPIO(11,val); //c'est une macro le premier caractÃ©re est substituer et ne peut donc par etre variable
+	 GPIO(11,val); //c'est une macro le premier caractére est substituer et ne peut donc par etre variable
 	 break;
 	 case 12 :
 	 GPIO(12,val); //c'est une macro
@@ -117,5 +117,5 @@
 
  void updateGpio(void)
  {
- //TODO (ou pas!) faire une fonction qui lit system_data et qui met Ã  jourles ggio en fonction
+ //TODO (ou pas!) faire une fonction qui lit system_data et qui met à jourles ggio en fonction
  }

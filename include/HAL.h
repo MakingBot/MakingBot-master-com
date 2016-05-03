@@ -1,6 +1,6 @@
-ï»¿/**
+/**
  *  \file HAL.h
- *  \brief fichier d'entÃªte de la couche d'abstraction matÃ©riel
+ *  \brief fichier d'entête de la couche d'abstraction matériel
  */
 #ifndef HAL_H
 #define HAL_H
@@ -26,8 +26,8 @@
 #define GPIO16_19   MINAPPCMD   + 3
 #define CURRENTCHANNEL  MINAPPCMD + 4
 #define LED_COLOR MINAPPCMD     + 5
-#define GPIOBIT  MINAPPCMD  + 6 //correspon,d Ã  la GPIO0 les 19 suivante sont utilisÃ©
-//reservÃ©
+#define GPIOBIT  MINAPPCMD  + 6 //correspon,d à la GPIO0 les 19 suivante sont utilisé
+//reservé
 #define GPIOPORT    MINAPPCMD +26
 //macros
 #pragma message "adresse of MINAPPCMD = " STR(MINAPPCMD)
@@ -45,14 +45,14 @@
  GPIO ## num ## _PORT |=(1<<GPIO ## num ## BIT);
 //supression car devenue inutile avec gpio.c
 /******************************************
- *  dÃ©finition des type enumÃ©rÃ©
+ *  définition des type enuméré
  */
 
 // /brief type de data
 
 //longueur data 0
-//longueur data 2 1er octect numÃ©ro gpio, 2eme etat gpio type bool
-// numÃ©ro du port suivi data la dir est fixÃ© dans le code
+//longueur data 2 1er octect numéro gpio, 2eme etat gpio type bool
+// numéro du port suivi data la dir est fixé dans le code
 //voie courant suivie de la valeur
 //liste des registre de l'application
 

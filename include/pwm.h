@@ -3,7 +3,7 @@
 #define TAKEJETONPWM \
 while (jetonPwm);\
 jetonPwm = 1;
-//uint jetonPwm; //jeton pwm est remis Ã  0 lors d'un nouveau cycle pwm permet de bloquer une execution
+//uint jetonPwm; //jeton pwm est remis à 0 lors d'un nouveau cycle pwm permet de bloquer une execution
 typedef struct
  {
  uchar R;

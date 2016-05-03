@@ -1,4 +1,4 @@
-﻿ /**
+ /**
  *  \file utility.h
  *  \brief wrapper to util
  */

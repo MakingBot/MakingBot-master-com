@@ -126,7 +126,8 @@ void poppyNetwork_init(TX_CB tx_cb,
 
 unsigned char poppyNetwork_read(unsigned char addr, msg_t *msg) {
     i2cAddr(addr, TX);
-    for (unsigned char i = 0; i < msg->size; i++) {
+    unsigned char i;
+    for (i = 0; i < msg->size; i++) {
         msg->data[i] = i2cRead(1);
     }
     i2c_transmit(STOP);
@@ -140,6 +141,7 @@ unsigned char poppyNetwork_read(unsigned char addr, msg_t *msg) {
 }
 
 unsigned char poppyNetwork_write(unsigned char addr, msg_t *msg) {
+    unsigned char i;
     if (i2cAddr(addr, TX)) {
         i2c_transmit(STOP);
         return 1;
@@ -147,7 +149,7 @@ unsigned char poppyNetwork_write(unsigned char addr, msg_t *msg) {
     // Write DATA
     i2cWrite(msg->reg);
     i2cWrite(msg->size);
-    for (unsigned char i = 0; i < msg->size; i++) {
+    for (i = 0; i < msg->size; i++) {
         i2cWrite(msg->data[i]);
     }
     i2c_transmit(STOP);
