@@ -13,7 +13,9 @@ void hal_init(void) {
     TWBR = ((MAINCLOCK / SCLFREQ) - 16) / 2;
     TWSR &= ~(1<<TWPS1) & ~(1<<TWPS0);  // SetPrescaler divisor to 1
     TWAR = (0x0A << 1) | (1<<TWGCE);  // I2C Address and enable general call
-    TWAMR = 0x00;  // Not used
+    #if MCU != atmega64
+    TWAMR = 0x00;  // Not used not exit in atmega64
+    #endif
     TWCR = ((1 << TWEA) | (1 << TWEN) | (1 << TWIE));  // Enable ACK system
 }
 
