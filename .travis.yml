@@ -1,3 +1,13 @@
+sudo: false
+addons:
+  apt:
+    packages:
+    - doxygen
+    - graphviz
+    - avr-libc
+    - gcc-avr
+    - binutils-avr
+  
 before_install:
   - sudo apt-get update
   - sudo apt-get install -qq doxygen graphviz avr-libc gcc-avr binutils-avr
