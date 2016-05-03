@@ -8,9 +8,7 @@ addons:
     - gcc-avr
     - binutils-avr
   
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install -qq doxygen graphviz avr-libc gcc-avr binutils-avr
+
 language: c
 compiler:
   - avr-gcc
