@@ -1,6 +1,6 @@
 #include <util/twi.h>
 #include <avr/interrupt.h>
-#include "poppy-com/atmega328p/hal.h"
+#include "poppy-com/hal/atmega64/hal.h"
 #include "poppy-com/inc/i2c_slave.h"
 
 // I2C Master mode
@@ -62,6 +62,7 @@ unsigned char i2cAddr(unsigned char addr, msg_dir_t dir) {
             // ACK received
             return 0;
         break;
+        case TW_MR_SLA_NACK:
         case TW_MT_SLA_NACK:
             // NACK received
         case TW_MT_ARB_LOST:
@@ -88,7 +89,7 @@ unsigned char i2cWrite(unsigned char data) {
     return 0;
 }
 
-unsigned char i2cRead(unsigned char ack_enable) {
+unsigned char i2cRead(unsigned char ack_enable, unsigned char *data) {
     if (ack_enable) {
         if (i2c_transmit(DATA) != TW_MR_DATA_ACK) {
             ctx.status.master_read = TRUE;
@@ -100,7 +101,8 @@ unsigned char i2cRead(unsigned char ack_enable) {
             return 1;
         }
     }
-    return TWDR;
+    *data = TWDR;
+    return 0;
 }
 
 // I2C Slave mode
@@ -145,6 +147,10 @@ ISR(TWI_vect) {
                 ctx.status.unexpected_state = TRUE;
                 ctx.data_cb = idle;
             break;
+            case TW_SR_STOP:
+                TWCR |= (1<<TWINT)|(1<<TWSTO);
+                ctx.data_cb = idle;
+                ctx.data_cb(END, &TWDR);
             default:
                 TWCR |= (1<<TWINT);
             break;
@@ -153,9 +159,23 @@ ISR(TWI_vect) {
 
 void id_update(unsigned char id) {
     ctx.id = id;
-    TWAR = (ctx.id << 1) & ~(1 << TWGCE);
+    TWAR = (ctx.id << 1) | (1 << TWGCE);
     /*
      * TORO(NR) : Write this ID on EEPROM and use it as default at
      *            reboot (do this after debug)
     */
+}
+
+unsigned char crc(unsigned char* data, unsigned char size) {
+    unsigned char x;
+    unsigned int crc = 0xFFFF;
+
+    while (size--) {
+        x = crc >> 8 ^ *data++;
+        x ^= x>>4;
+        crc = (crc << 8) ^ ((unsigned int)(x << 12))
+                         ^ ((unsigned int)(x <<5))
+                         ^ ((unsigned int)x);
+    }
+    return (unsigned char)crc;
 }

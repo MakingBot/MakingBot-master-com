@@ -2,7 +2,14 @@
  * This file contain default configuration of the project.
  */
 
+<<<<<<< HEAD
 #include "mod_list.h"
+=======
+#ifndef CONFIG_H_
+#define CONFIG_H_
+
+#include "poppy-com/inc/mod_list.h"
+>>>>>>> update
 
 #define DEFAULTID 0x01
 
@@ -28,7 +35,19 @@
     #define MAX_TRIES 5
 #endif
 
+<<<<<<< HEAD
 
 
     #define HAL "../atmega64/hal.h"
 
+=======
+#if MCU == atmega328p
+    #define HAL "poppy-com/hal/atmega328p/hal.h"
+#elif MCU == stub
+    #define HAL "poppy-com/hal/stub/hal.h"
+#elif MCU== atmega64
+    #define HAL "poppy-com/hal/atmega64/hal.h"
+#endif
+
+#endif /* CONFIG_H_ */
+>>>>>>> update

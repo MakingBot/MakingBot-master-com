@@ -22,7 +22,8 @@
 typedef enum {
     TX,   /*!< Slave transmiter mode. */
     RX,   /*!< Slave receiver mode. */
-    RXGC  /*!< Slave receiver général call mode. */
+    RXGC, /*!< Slave receiver général call mode. */
+    END   /*!< Slave receiver stop. */
 }msg_dir_t;
 
 
@@ -51,9 +52,6 @@ typedef void (*TX_CB) (msg_t *msg);
  * \param rx_cb function pointer into the rx callback.
  * \param rxgc_cb function pointer into the rx general call callback.
  *
- * TODO :
- * - Return success or not.
- * - Check NULL pointers.
  */
 void poppyNetwork_init(TX_CB tx_cb,
                        RX_CB rx_cb,
@@ -66,10 +64,9 @@ void poppyNetwork_init(TX_CB tx_cb,
  * \param addr Address of the slave.
  * \param msg Message to send to the slave, he come back with the reply of the slave.
  *
- * TODO :
- * - Write before read management
  */
-unsigned char poppyNetwork_read(unsigned char addr, msg_t *msg);
+unsigned char poppyNetwork_read(unsigned char addr, msg_t *msg,
+                                unsigned char reply_size);
 
 /**
  * \fn unsigned char poppyNetwork_write(unsigned char addr, msg_t *msg)
@@ -83,15 +80,7 @@ unsigned char poppyNetwork_write(unsigned char addr, msg_t *msg);
 /**
  **TODO**
  *
- *Les trucs relatif au boot doivent être viré, cette lib doit êttre utilisé tant du coté bootloader qu'utilisateur...
- *
- *Evaluer l'impact mémoire de la lib et limiter au maximum les structures de donnée lourde en interne, les déporter au niveau utilisateur.
- *
  *Faire la doc en commentaire
- *
- *Monter clk
- *
- *Regarder comment fonctionne les lib arduino (ajout des trucs dans l'init gestion de clk et autre
  *
  *Gérer le checksum
 */

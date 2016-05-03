@@ -19,11 +19,13 @@ unsigned char set_extern_id(unsigned char addr, unsigned char newid) {
         i2c_transmit(STOP);
         return 1;
     }
+    i2cWrite(crc(&newid, 1));
     i2c_transmit(STOP);
     return 0;
 }
 
-unsigned char get_extern_module_type(unsigned char addr, unsigned char *module_type) {
+unsigned char get_extern_module_type(unsigned char addr,
+                                     unsigned char *module_type) {
     if (i2cAddr(addr, TX)) {
         i2c_transmit(STOP);
         return 1;
@@ -36,7 +38,10 @@ unsigned char get_extern_module_type(unsigned char addr, unsigned char *module_t
         i2c_transmit(STOP);
         return 1;
     }
-    *module_type = i2cRead(FALSE);
+    if (i2cRead(FALSE, module_type)) {
+        i2c_transmit(STOP);
+        return 1;
+    }
     i2c_transmit(STOP);
     return 0;
 }

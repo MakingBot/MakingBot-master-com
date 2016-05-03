@@ -1,10 +1,8 @@
 #include "../inc/i2c_slave.h"
 #include HAL
 
-
 // Global variables
 extern context_t ctx;
-
 /*
  * idle function is called when we are ready to receive or send a new message.
  */
@@ -18,9 +16,11 @@ void idle(msg_dir_t dir, volatile unsigned char *data) {
              * At this point we should have something ready to send.
              */
             if (msg_size) {
+                /*
+                 *This case is dedicated to protocol messages
+                 */
                 msg_size--;
-                *data = *data_to_send;
-                data_to_send++;
+                *data = *data_to_send++;
             } else {
                 ctx.tx_cb(&ctx.msg);
             }
@@ -58,11 +58,15 @@ void idle(msg_dir_t dir, volatile unsigned char *data) {
                     // Reply with the actual firmware revision number
                     // TODO(NR)
                 break;
-                case WRITE_FIRMWARE:
                 default:
                     ctx.data_cb = get_size;
                 break;
             }
+        break;
+        case END:
+            if (msg_size > 0)
+                ctx.status.rx_error = TRUE;
+            msg_size = 0;
         break;
     }
 }
@@ -80,12 +84,15 @@ void get_size(msg_dir_t dir, volatile unsigned char *data) {
 
 void get_data(msg_dir_t dir, volatile unsigned char *data) {
     static unsigned char data_count = 0;
-    ctx.msg.data[data_count++] = *data;
-    if (data_count == ctx.msg.size) {
+    if (data_count < ctx.msg.size) {
+        ctx.msg.data[data_count++] = *data;
+    } else {
         ctx.data_cb = idle;
         data_count = 0;
-        msg_complete(dir);
-        // In the future call the checksum function
+        if (*data == crc(&ctx.msg.data[0], ctx.msg.size))
+            msg_complete(dir);
+        else
+            ctx.status.rx_error = TRUE;
     }
 }
 
@@ -95,9 +102,6 @@ void msg_complete(msg_dir_t dir) {
             // Get and save a new given ID
             id_update(ctx.msg.data[0]);
         break;
-        case WRITE_FIRMWARE:
-            // TODO(NR)
-        break;
         case GET_ID:
         case GET_MODULE_TYPE:
         case GET_STATUS:
@@ -106,7 +110,10 @@ void msg_complete(msg_dir_t dir) {
             ctx.status.rx_error = TRUE;
         break;
         default:
-            ctx.rx_cb(dir, &ctx.msg);
+            if (dir == RX)
+                ctx.rx_cb(dir, &ctx.msg);
+            else
+                ctx.rxgc_cb(dir, &ctx.msg);
         break;
     }
 }

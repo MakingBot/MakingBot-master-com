@@ -10,5 +10,12 @@
 *.sym
 
 
+
 obj
 bin
+
+*.gc*
+.tags*
+*.info
+/Docs
+
