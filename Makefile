@@ -11,16 +11,14 @@
 DOXYFILE = .Doxyfile
 
 # Microcontroller Type
-
+# MCU = atmega328p
 MCU = atmega64
-# MCU = atmega64
 
 # Main clock speed (Hz)
 MAINCLOCK = 16000000
 
 # Maximum I2C speed (HZ)
 SCLFREQ = 400000
-
 
 # Target file name (without extension).
 TARGET = PeriphMaster
@@ -29,10 +27,8 @@ TARGET = PeriphMaster
 # to get a full listing.
 # AVRDUDE_PROGRAMMER = dapa
 # AVRDUDE_PROGRAMMER = usbtiny
-
-# AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PROGRAMMER = dragon_jtag
-
+AVRDUDE_PROGRAMMER = dragon_isp
+# AVRDUDE_PROGRAMMER = dragon_jtag
 # AVRDUDE_PROGRAMMER = dt006
 
 AVRDUDE_PORT = usb # not really needed for usb
@@ -85,9 +81,7 @@ ASRC =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
-
-EXTRAINCDIRS = poppy-com/ poppy-com/inc/ poppy-com/src/ poppy-com/$(MCU)/ include/
-
+EXTRAINCDIRS = poppy-com/ poppy-com/inc/ poppy-com/src/ poppy-com/hal/$(MCU)/
 
 
 # Optional compiler flags.
