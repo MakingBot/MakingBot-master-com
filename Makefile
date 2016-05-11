@@ -81,7 +81,7 @@ ASRC =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
-EXTRAINCDIRS = poppy-com/ poppy-com/inc/ poppy-com/src/ poppy-com/hal/$(MCU)/
+EXTRAINCDIRS = poppy-com/ poppy-com/inc/ poppy-com/src/ poppy-com/hal/$(MCU)/ include/
 
 
 # Optional compiler flags.
