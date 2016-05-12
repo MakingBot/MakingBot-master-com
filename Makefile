@@ -406,9 +406,9 @@ clean_list :
 # This may not work with other shells or other seds.
 #
 %.d: %.c
-	set -e; $(CC) -MM $(ALL_CFLAGS) $< \
+	$(CC) -MM $(ALL_CFLAGS) $< \
 	| sed 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' > $@; \
-	[ -s $@ ] || rm -f $@
+	[ -s $@ ]
 
 
 # Remove the '-' if you want to see the dependency files generated.
