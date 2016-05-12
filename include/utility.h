@@ -14,7 +14,7 @@
      #else
      #define HALdelay_ms(ms) _delay_ms(ms)
      #endif // __DEBUG__
- #define HAL_sei()   sei()
- #define HAL_cli()	cli()
+ #define HAL_sei()   sei(void)
+ #define HAL_cli()	cli(void)
  #endif
  #endif

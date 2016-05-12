@@ -14,7 +14,7 @@
 
 static uint PowerledR,PowerledV,PowerledB;
 
-void pwm_init()
+void pwm_init(void)
 {
     //disable interruption
 

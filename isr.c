@@ -12,7 +12,7 @@
 
 #include <util/delay.h>
 
-void isr_init()
+void isr_init(void)
 {
 //gestion du bouton
 EIMSK |=_BV(INT4); //validation interruption  4

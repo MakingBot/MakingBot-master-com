@@ -17,13 +17,15 @@
     #define MODULETYPE DEV_BOARD
 #endif
 
-//#ifndef MCU
+#ifndef MCU
     #define MCU atmega64
-//#endif
+#endif
 
 #ifndef MAINCLOCK
     #define MAINCLOCK 8000000
 #endif
+
+
 
 #ifndef SCLFREQ
     #define SCLFREQ 400000

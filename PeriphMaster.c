@@ -29,7 +29,7 @@ extern struct data system_data;
  *  \return none
  *
  *  \details Details
- */int main()
+ */int main(void)
 {
 
     cli();

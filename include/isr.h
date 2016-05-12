@@ -7,6 +7,6 @@
 #ifndef ISR_H_INCLUDED
 #define ISR_H_INCLUDED
 
-void isr_init();
+void isr_init(void);
 
 #endif // PWM_H_INCLUDED
